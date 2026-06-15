@@ -1,0 +1,708 @@
+﻿[
+    {
+        "id":  "garlic-butter-chicken",
+        "name":  "Garlic Butter Chicken",
+        "summary":  "Golden chicken breast finished in a bright lemon-garlic pan sauce.",
+        "cuisine":  "American",
+        "tags":  [
+                     "High Protein",
+                     "Gluten Free"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  18,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Chicken Breast",
+                                "amount":  "2 pieces",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Butter",
+                                "amount":  "3 tbsp",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "4 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Lemon",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Olive Oil",
+                                "amount":  "1 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Salt \u0026 Pepper",
+                                "amount":  "to taste",
+                                "category":  "Spices"
+                            }
+                        ],
+        "steps":  [
+                      "Pat the chicken dry and season both sides with salt and pepper.",
+                      "Heat olive oil and one tablespoon of butter in a skillet over medium-high heat.",
+                      "Cook the chicken until golden and cooked through, about 6 to 7 minutes per side.",
+                      "Lower the heat, add the remaining butter and minced garlic, and cook for 30 seconds.",
+                      "Squeeze in the lemon juice and spoon the pan sauce over the chicken."
+                  ],
+        "nutrition":  {
+                          "calories":  430,
+                          "protein":  41,
+                          "carbs":  4,
+                          "fat":  28
+                      },
+        "icon":  "CHKN"
+    },
+    {
+        "id":  "tomato-spinach-pasta",
+        "name":  "Tomato Spinach Pasta",
+        "summary":  "A fast, comforting tomato pasta with wilted greens and parmesan.",
+        "cuisine":  "Italian",
+        "tags":  [
+                     "Vegetarian",
+                     "Weeknight"
+                 ],
+        "prepMinutes":  8,
+        "cookMinutes":  17,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Pasta",
+                                "amount":  "200 g",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Canned Tomatoes",
+                                "amount":  "1 can",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Spinach",
+                                "amount":  "2 cups",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "3 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1/2",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Parmesan Cheese",
+                                "amount":  "1/3 cup",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Olive Oil",
+                                "amount":  "2 tbsp",
+                                "category":  "Pantry"
+                            }
+                        ],
+        "steps":  [
+                      "Cook the pasta in salted water until al dente, reserving half a cup of cooking water.",
+                      "Saute the diced onion in olive oil until soft, then add the garlic.",
+                      "Add the canned tomatoes and simmer for 8 minutes.",
+                      "Fold in the spinach until wilted.",
+                      "Toss with pasta, parmesan, and enough pasta water to make a glossy sauce."
+                  ],
+        "nutrition":  {
+                          "calories":  510,
+                          "protein":  18,
+                          "carbs":  79,
+                          "fat":  14
+                      },
+        "icon":  "PASTA"
+    },
+    {
+        "id":  "beef-broccoli-rice",
+        "name":  "Beef and Broccoli Rice Bowl",
+        "summary":  "Tender beef and crisp broccoli over rice with a savory soy glaze.",
+        "cuisine":  "Asian",
+        "tags":  [
+                     "High Protein",
+                     "Meal Prep"
+                 ],
+        "prepMinutes":  15,
+        "cookMinutes":  15,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Ground Beef",
+                                "amount":  "300 g",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Broccoli",
+                                "amount":  "1 head",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Rice",
+                                "amount":  "1 cup",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Soy Sauce",
+                                "amount":  "3 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "2 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1/2",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Cook the rice according to the package instructions.",
+                      "Brown the beef in a wide skillet and drain excess fat.",
+                      "Add onion, garlic, and broccoli and cook until the broccoli is bright green.",
+                      "Pour in the soy sauce with two tablespoons of water.",
+                      "Simmer until glazed and serve over the rice."
+                  ],
+        "nutrition":  {
+                          "calories":  620,
+                          "protein":  36,
+                          "carbs":  62,
+                          "fat":  24
+                      },
+        "icon":  "BEEF"
+    },
+    {
+        "id":  "salmon-rice-bowl",
+        "name":  "Honey Soy Salmon Bowl",
+        "summary":  "Caramelized salmon with a sweet-savory glaze, rice, and avocado.",
+        "cuisine":  "Asian",
+        "tags":  [
+                     "Seafood",
+                     "High Protein"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  15,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Salmon",
+                                "amount":  "2 fillets",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Rice",
+                                "amount":  "1 cup",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Soy Sauce",
+                                "amount":  "2 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Honey",
+                                "amount":  "1 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "2 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Avocado",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Cook the rice and keep it covered.",
+                      "Whisk soy sauce, honey, garlic, and one tablespoon of water.",
+                      "Sear the salmon in a lightly oiled skillet for 4 minutes.",
+                      "Flip, add the glaze, and cook until the salmon flakes easily.",
+                      "Serve over rice with sliced avocado and the remaining glaze."
+                  ],
+        "nutrition":  {
+                          "calories":  650,
+                          "protein":  38,
+                          "carbs":  69,
+                          "fat":  25
+                      },
+        "icon":  "FISH"
+    },
+    {
+        "id":  "black-bean-tacos",
+        "name":  "Black Bean Avocado Tacos",
+        "summary":  "Creamy beans and avocado tucked into warm tortillas with lime.",
+        "cuisine":  "Mexican",
+        "tags":  [
+                     "Vegetarian",
+                     "Quick"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  8,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Black Beans",
+                                "amount":  "1 can",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Tortillas",
+                                "amount":  "6",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Avocado",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Tomato",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Cheddar Cheese",
+                                "amount":  "1/2 cup",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Lime",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1/4",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Warm the beans in a saucepan and lightly mash them.",
+                      "Dice the tomato, onion, and avocado.",
+                      "Warm the tortillas in a dry skillet.",
+                      "Fill each tortilla with beans, cheese, tomato, onion, and avocado.",
+                      "Finish with fresh lime juice."
+                  ],
+        "nutrition":  {
+                          "calories":  540,
+                          "protein":  21,
+                          "carbs":  72,
+                          "fat":  21
+                      },
+        "icon":  "TACO"
+    },
+    {
+        "id":  "mushroom-omelet",
+        "name":  "Mushroom Spinach Omelet",
+        "summary":  "A fluffy breakfast omelet packed with vegetables and cheddar.",
+        "cuisine":  "French",
+        "tags":  [
+                     "Breakfast",
+                     "Gluten Free"
+                 ],
+        "prepMinutes":  6,
+        "cookMinutes":  9,
+        "servings":  1,
+        "ingredients":  [
+                            {
+                                "name":  "Eggs",
+                                "amount":  "3",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Mushrooms",
+                                "amount":  "1 cup",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Spinach",
+                                "amount":  "1 cup",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Cheddar Cheese",
+                                "amount":  "1/4 cup",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Butter",
+                                "amount":  "1 tbsp",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Salt \u0026 Pepper",
+                                "amount":  "to taste",
+                                "category":  "Spices"
+                            }
+                        ],
+        "steps":  [
+                      "Whisk the eggs with salt and pepper.",
+                      "Saute the mushrooms in half the butter, then add spinach until wilted.",
+                      "Remove the vegetables and melt the remaining butter.",
+                      "Pour in the eggs and cook gently, lifting the edges as they set.",
+                      "Add vegetables and cheese to one side, fold, and cook until melted."
+                  ],
+        "nutrition":  {
+                          "calories":  410,
+                          "protein":  27,
+                          "carbs":  7,
+                          "fat":  31
+                      },
+        "icon":  "EGG"
+    },
+    {
+        "id":  "shrimp-fried-rice",
+        "name":  "Weeknight Shrimp Fried Rice",
+        "summary":  "A colorful one-pan rice dinner with shrimp, egg, and soy sauce.",
+        "cuisine":  "Asian",
+        "tags":  [
+                     "One Pan",
+                     "Quick"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  12,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Shrimp",
+                                "amount":  "250 g",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Rice",
+                                "amount":  "2 cups cooked",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Eggs",
+                                "amount":  "2",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Soy Sauce",
+                                "amount":  "2 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "2 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1/2",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Pat the shrimp dry and season lightly.",
+                      "Cook the shrimp in a hot skillet until pink, then set aside.",
+                      "Saute onion and garlic in the same skillet.",
+                      "Push the vegetables aside and scramble the eggs.",
+                      "Add rice, soy sauce, and shrimp and toss over high heat."
+                  ],
+        "nutrition":  {
+                          "calories":  520,
+                          "protein":  34,
+                          "carbs":  63,
+                          "fat":  13
+                      },
+        "icon":  "RICE"
+    },
+    {
+        "id":  "potato-breakfast-hash",
+        "name":  "Crispy Potato Breakfast Hash",
+        "summary":  "Golden potatoes, onion, bacon, and eggs in a hearty skillet.",
+        "cuisine":  "American",
+        "tags":  [
+                     "Breakfast",
+                     "One Pan"
+                 ],
+        "prepMinutes":  12,
+        "cookMinutes":  22,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Potatoes",
+                                "amount":  "2 large",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Bacon",
+                                "amount":  "4 slices",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Eggs",
+                                "amount":  "2",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1/2",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "2 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Salt \u0026 Pepper",
+                                "amount":  "to taste",
+                                "category":  "Spices"
+                            }
+                        ],
+        "steps":  [
+                      "Dice the potatoes and onion into small, even pieces.",
+                      "Cook the bacon until crisp, then remove and chop.",
+                      "Cook potatoes and onion in the bacon fat until golden and tender.",
+                      "Add garlic and bacon, then make two wells in the hash.",
+                      "Crack in the eggs, cover, and cook until the whites are set."
+                  ],
+        "nutrition":  {
+                          "calories":  490,
+                          "protein":  22,
+                          "carbs":  43,
+                          "fat":  27
+                      },
+        "icon":  "HASH"
+    },
+    {
+        "id":  "grilled-cheese-tomato",
+        "name":  "Tomato Cheddar Grilled Cheese",
+        "summary":  "Crisp buttery bread with molten cheddar and juicy tomato.",
+        "cuisine":  "American",
+        "tags":  [
+                     "Vegetarian",
+                     "Comfort Food"
+                 ],
+        "prepMinutes":  5,
+        "cookMinutes":  8,
+        "servings":  1,
+        "ingredients":  [
+                            {
+                                "name":  "Bread",
+                                "amount":  "2 slices",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Cheddar Cheese",
+                                "amount":  "3 slices",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Tomato",
+                                "amount":  "3 slices",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Butter",
+                                "amount":  "1 tbsp",
+                                "category":  "Dairy"
+                            }
+                        ],
+        "steps":  [
+                      "Butter one side of each bread slice.",
+                      "Layer cheddar and tomato between the unbuttered sides.",
+                      "Cook in a skillet over medium-low heat until deeply golden.",
+                      "Flip carefully and cook until the cheese is fully melted."
+                  ],
+        "nutrition":  {
+                          "calories":  470,
+                          "protein":  19,
+                          "carbs":  35,
+                          "fat":  28
+                      },
+        "icon":  "TOAST"
+    },
+    {
+        "id":  "lemon-shrimp-pasta",
+        "name":  "Lemon Garlic Shrimp Pasta",
+        "summary":  "Silky pasta tossed with shrimp, garlic butter, spinach, and lemon.",
+        "cuisine":  "Italian",
+        "tags":  [
+                     "Seafood",
+                     "Date Night"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  15,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Shrimp",
+                                "amount":  "250 g",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Pasta",
+                                "amount":  "200 g",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "4 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Butter",
+                                "amount":  "3 tbsp",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Lemon",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Spinach",
+                                "amount":  "1 cup",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Cook pasta until al dente and reserve half a cup of pasta water.",
+                      "Sear seasoned shrimp in one tablespoon of butter and set aside.",
+                      "Add remaining butter and garlic to the skillet.",
+                      "Add lemon juice, spinach, and a splash of pasta water.",
+                      "Toss in the pasta and shrimp until glossy."
+                  ],
+        "nutrition":  {
+                          "calories":  610,
+                          "protein":  32,
+                          "carbs":  72,
+                          "fat":  22
+                      },
+        "icon":  "SHRIMP"
+    },
+    {
+        "id":  "chicken-fajitas",
+        "name":  "Easy Chicken Fajitas",
+        "summary":  "Sizzling chicken, onion, and tomato wrapped in warm tortillas.",
+        "cuisine":  "Mexican",
+        "tags":  [
+                     "Family",
+                     "High Protein"
+                 ],
+        "prepMinutes":  12,
+        "cookMinutes":  15,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Chicken Breast",
+                                "amount":  "300 g",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Tortillas",
+                                "amount":  "6",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Onion",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Tomato",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Cheddar Cheese",
+                                "amount":  "1/2 cup",
+                                "category":  "Dairy"
+                            },
+                            {
+                                "name":  "Lime",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Olive Oil",
+                                "amount":  "1 tbsp",
+                                "category":  "Pantry"
+                            }
+                        ],
+        "steps":  [
+                      "Slice the chicken and onion into thin strips.",
+                      "Toss chicken with olive oil, lime juice, salt, and pepper.",
+                      "Cook onion over high heat until browned at the edges.",
+                      "Add chicken and cook until golden and cooked through.",
+                      "Serve in warm tortillas with tomato and cheddar."
+                  ],
+        "nutrition":  {
+                          "calories":  570,
+                          "protein":  42,
+                          "carbs":  46,
+                          "fat":  22
+                      },
+        "icon":  "FAJITA"
+    },
+    {
+        "id":  "avocado-egg-toast",
+        "name":  "Avocado Egg Toast",
+        "summary":  "Creamy avocado and jammy eggs on crisp toast with lemon.",
+        "cuisine":  "Modern",
+        "tags":  [
+                     "Breakfast",
+                     "Quick"
+                 ],
+        "prepMinutes":  5,
+        "cookMinutes":  8,
+        "servings":  1,
+        "ingredients":  [
+                            {
+                                "name":  "Bread",
+                                "amount":  "2 slices",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Avocado",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Eggs",
+                                "amount":  "2",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Lemon",
+                                "amount":  "1/2",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Salt \u0026 Pepper",
+                                "amount":  "to taste",
+                                "category":  "Spices"
+                            }
+                        ],
+        "steps":  [
+                      "Toast the bread until crisp.",
+                      "Mash avocado with lemon juice, salt, and pepper.",
+                      "Fry or soft-boil the eggs to your preference.",
+                      "Spread avocado over toast and top with the eggs."
+                  ],
+        "nutrition":  {
+                          "calories":  460,
+                          "protein":  19,
+                          "carbs":  39,
+                          "fat":  27
+                      },
+        "icon":  "AVO"
+    }
+]
