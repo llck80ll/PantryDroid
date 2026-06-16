@@ -106,13 +106,13 @@ private data class IngredientGroup(
 )
 
 private val ingredientGroups = listOf(
-    IngredientGroup("Meats & Seafood", "Meats", "ðŸ¥©", listOf("Chicken Breast", "Ground Beef", "Bacon", "Salmon", "Shrimp", "Cod Fillet", "Canned Tuna", "Sirloin Steak")),
-    IngredientGroup("Dairy & Eggs", "Dairy", "ðŸ¥›", listOf("Eggs", "Milk", "Butter", "Cheddar Cheese", "Parmesan Cheese", "Greek Yogurt")),
-    IngredientGroup("Vegetables & Greens", "Veggies", "ðŸ¥¦", listOf("Garlic", "Onion", "Tomato", "Spinach", "Broccoli", "Mushrooms", "Potatoes", "Avocado")),
-    IngredientGroup("Fruits", "Fruits", "ðŸŽ", listOf("Lemon", "Lime")),
-    IngredientGroup("Grains & Pantry", "Grains", "ðŸŒ¾", listOf("Pasta", "Rice", "Bread", "Tortillas", "Black Beans", "Canned Tomatoes")),
-    IngredientGroup("Spices & Seasonings", "Spices", "ðŸ§‚", listOf("Salt & Pepper")),
-    IngredientGroup("Sauces & Oils", "Sauces", "ðŸ¯", listOf("Olive Oil", "Soy Sauce", "Honey"))
+    IngredientGroup("Meats & Seafood", "Meats", "MEAT", listOf("Chicken Breast", "Ground Beef", "Bacon", "Salmon", "Shrimp", "Cod Fillet", "Canned Tuna", "Sirloin Steak")),
+    IngredientGroup("Dairy & Eggs", "Dairy", "DAIRY", listOf("Eggs", "Milk", "Butter", "Cheddar Cheese", "Parmesan Cheese", "Greek Yogurt")),
+    IngredientGroup("Vegetables & Greens", "Veggies", "VEG", listOf("Garlic", "Onion", "Tomato", "Spinach", "Broccoli", "Mushrooms", "Potatoes", "Avocado")),
+    IngredientGroup("Fruits", "Fruits", "FRUIT", listOf("Lemon", "Lime")),
+    IngredientGroup("Grains & Pantry", "Grains", "GRAIN", listOf("Pasta", "Rice", "Bread", "Tortillas", "Black Beans", "Canned Tomatoes")),
+    IngredientGroup("Spices & Seasonings", "Spices", "SPICE", listOf("Salt & Pepper")),
+    IngredientGroup("Sauces & Oils", "Sauces", "SAUCE", listOf("Olive Oil", "Soy Sauce", "Honey"))
 )
 
 @Composable
@@ -142,7 +142,7 @@ fun PantryApp(viewModel: PantryViewModel) {
                 }
 
                 AppTab.SAVED -> {
-                    item { SectionTitle("â¤ï¸", "Bookmarks Favorites", "${viewModel.favorites.size} saved") }
+                    item { SectionTitle("S", "Bookmarks Favorites", "${viewModel.favorites.size} saved") }
                     if (viewModel.favorites.isEmpty()) {
                         item { EmptyPremiumCard("Your bookmarks bar is empty", "Save recipes from the match cards and they will appear here.") }
                     } else {
@@ -186,7 +186,7 @@ private fun AppHeader(selectedTab: AppTab, viewModel: PantryViewModel, onSelect:
             Spacer(Modifier.width(12.dp))
             Column {
                 Text("Pantry", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Black)
-                Text("â˜… SMART KITCHEN COMPANIONS â˜…", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Bold)
+                Text("SMART KITCHEN COMPANIONS", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Bold)
             }
         }
         Spacer(Modifier.height(14.dp))
@@ -197,8 +197,8 @@ private fun AppHeader(selectedTab: AppTab, viewModel: PantryViewModel, onSelect:
         ) {
             Row(Modifier.padding(4.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
                 HeaderTab(AppTab.MATCH.label, selectedTab == AppTab.MATCH) { onSelect(AppTab.MATCH) }
-                HeaderTab("â¤ï¸ Saved (${viewModel.favoriteIds.size})", selectedTab == AppTab.SAVED) { onSelect(AppTab.SAVED) }
-                HeaderTab("ðŸ“… Planner (${viewModel.plannedMeals.size})", selectedTab == AppTab.PLANNER) { onSelect(AppTab.PLANNER) }
+                HeaderTab("Saved (${viewModel.favoriteIds.size})", selectedTab == AppTab.SAVED) { onSelect(AppTab.SAVED) }
+                HeaderTab("Planner (${viewModel.plannedMeals.size})", selectedTab == AppTab.PLANNER) { onSelect(AppTab.PLANNER) }
             }
         }
     }
@@ -225,14 +225,14 @@ private fun HeaderTab(label: String, selected: Boolean, onClick: () -> Unit) {
 @Composable
 private fun IntroCard() {
     PremiumCard {
-        SectionTitle("âœ¨", "What can you cook today?", null)
+        SectionTitle("*", "What can you cook today?", null)
         Surface(
             shape = RoundedCornerShape(18.dp),
             color = Color.Transparent,
             modifier = Modifier.border(1.4.dp, MaterialTheme.colorScheme.onSurface, RoundedCornerShape(18.dp))
         ) {
             Row(Modifier.padding(18.dp), horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                Text("ðŸš€", style = MaterialTheme.typography.headlineMedium)
+                Icon(Icons.Default.LocalFireDepartment, contentDescription = null, tint = PantryAmber, modifier = Modifier.size(34.dp))
                 Column {
                     Text("Welcome to Pantry!", fontWeight = FontWeight.Black)
                     Text(
@@ -335,7 +335,7 @@ private fun IngredientPill(label: String, selected: Boolean, onClick: () -> Unit
 private fun PantryInventory(viewModel: PantryViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("ðŸ—‚ï¸ PANTRY INVENTORY BY CATEGORY", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Black)
+            Text("PANTRY INVENTORY BY CATEGORY", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Black)
             Spacer(Modifier.weight(1f))
             Badge("${viewModel.pantry.size} items")
         }
@@ -369,7 +369,7 @@ private fun CustomizeCard(viewModel: PantryViewModel) {
         Text("Choose Cuisine Preference", fontWeight = FontWeight.Black, style = MaterialTheme.typography.labelMedium)
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
-                FilterChip(selected = viewModel.selectedCuisine == null, onClick = { viewModel.selectedCuisine = null }, label = { Text("ðŸ½ï¸ Any Cuisine") })
+                FilterChip(selected = viewModel.selectedCuisine == null, onClick = { viewModel.selectedCuisine = null }, label = { Text("Any Cuisine") })
             }
             items(viewModel.cuisines) { cuisine ->
                 FilterChip(selected = viewModel.selectedCuisine == cuisine, onClick = { viewModel.selectedCuisine = cuisine }, label = { Text(cuisineEmoji(cuisine) + " " + cuisine) })
@@ -406,7 +406,7 @@ private fun FireUpCard(viewModel: PantryViewModel) {
         )
         Surface(shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)) {
             Text(
-                "ðŸ¥˜ Combinations: ${viewModel.pantry.sorted().take(1).firstOrNull() ?: "None"} ${if (viewModel.pantry.size > 1) "+ ${viewModel.pantry.size - 1} more" else ""}  READY",
+                "Combinations: ${viewModel.pantry.sorted().take(1).firstOrNull() ?: "None"} ${if (viewModel.pantry.size > 1) "+ ${viewModel.pantry.size - 1} more" else ""}  READY",
                 modifier = Modifier.padding(12.dp),
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold
@@ -450,7 +450,7 @@ private fun StrictMatchCard(viewModel: PantryViewModel) {
 @Composable
 private fun RecipeResults(viewModel: PantryViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        SectionTitle("ðŸ½ï¸", "Gourmet Recipes", "${viewModel.matches.size} total")
+        SectionTitle("R", "Gourmet Recipes", "${viewModel.matches.size} total")
         Text("A custom culinary selection built around your pantry.", color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (viewModel.matches.isEmpty()) {
             EmptyPremiumCard("No Matches Found", "No recipes fit your selected filters. Try relaxing strict matching or selecting more ingredients.")
@@ -484,9 +484,9 @@ private fun RecipeCard(match: RecipeMatch, viewModel: PantryViewModel) {
                 Text(recipe.summary, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 StatRow(
                     listOf(
-                        "ðŸ”¥ ${scaledCalories(recipe, viewModel)} CAL" to "",
-                        "ðŸ’ª ${scaledMacro(recipe.nutrition.protein, recipe, viewModel)}g PROT" to "",
-                        "ðŸ¥– ${scaledMacro(recipe.nutrition.carbs, recipe, viewModel)}g CARB" to ""
+                        "${scaledCalories(recipe, viewModel)} CAL" to "",
+                        "${scaledMacro(recipe.nutrition.protein, recipe, viewModel)}g PROT" to "",
+                        "${scaledMacro(recipe.nutrition.carbs, recipe, viewModel)}g CARB" to ""
                     ),
                     compact = true
                 )
@@ -502,7 +502,7 @@ private fun RecipeCard(match: RecipeMatch, viewModel: PantryViewModel) {
                         modifier = Modifier.weight(1f)
                     ) { Text("Add to Meal Planning", textAlign = TextAlign.Center) }
                 }
-                Text("ðŸ’¬ Comments (0)", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("Comments (0)", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }
@@ -517,8 +517,8 @@ private fun HeroPanel(recipe: Recipe, modifier: Modifier = Modifier, trailing: @
             modifier = Modifier.align(Alignment.TopStart).padding(12.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            MiniBadge("ðŸ¥— ${difficulty(recipe)}")
-            MiniBadge("â° ${recipe.totalMinutes} MINS")
+            MiniBadge(difficulty(recipe))
+            MiniBadge("${recipe.totalMinutes} MINS")
         }
         Box(Modifier.align(Alignment.TopEnd).padding(8.dp)) { trailing() }
     }
@@ -607,7 +607,7 @@ private fun RecipeGuideDialog(recipe: Recipe, viewModel: PantryViewModel, onDism
                             Spacer(Modifier.width(8.dp))
                             Text("Add to Weekly Meal Plan", fontWeight = FontWeight.Black)
                         }
-                        Text("â™¨ NUTRITION INFO", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Black)
+                        Text("NUTRITION INFO", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Black)
                         StatRow(listOf("CAL" to "${scaledCalories(recipe, viewModel)}", "PROT" to "${scaledMacro(recipe.nutrition.protein, recipe, viewModel)} g", "CARB" to "${scaledMacro(recipe.nutrition.carbs, recipe, viewModel)} g", "FAT" to "${scaledMacro(recipe.nutrition.fat, recipe, viewModel)} g"))
                         InventoryChecklist(recipe.ingredients, owned)
                         Text("INTERACTIVE COOKING STEPS", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Black)
@@ -647,7 +647,7 @@ private fun InventoryChecklist(ingredients: List<Ingredient>, owned: List<Ingred
     Surface(shape = RoundedCornerShape(18.dp), color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f), border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline)) {
         Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row {
-                Text("â˜‘ INVENTORY CHECKLIST", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Black)
+                Text("INVENTORY CHECKLIST", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Black)
                 Spacer(Modifier.weight(1f))
                 Badge("${ingredients.size} ITEMS")
             }
@@ -688,7 +688,7 @@ private fun StepCard(index: Int, step: String, ingredients: List<Ingredient>, ow
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     items(ingredients) { ing ->
                         val hasIt = ing in owned
-                        MiniBadge("ðŸ¥£ ${ing.name.uppercase()} (${ing.amount})${if (hasIt) "" else " NEED"}", bg = if (hasIt) PantryIndigo.copy(alpha = 0.10f) else Color(0xFFFFEEF2), fg = if (hasIt) PantryIndigo else Color(0xFFE11D48))
+                        MiniBadge("${ing.name.uppercase()} (${ing.amount})${if (hasIt) "" else " NEED"}", bg = if (hasIt) PantryIndigo.copy(alpha = 0.10f) else Color(0xFFFFEEF2), fg = if (hasIt) PantryIndigo else Color(0xFFE11D48))
                     }
                 }
             }
@@ -699,7 +699,7 @@ private fun StepCard(index: Int, step: String, ingredients: List<Ingredient>, ow
 @Composable
 private fun PlannerScreen(viewModel: PantryViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        SectionTitle("ðŸ“…", "Weekly Smart Meal Planner", "${viewModel.plannedMeals.size} slots")
+        SectionTitle("P", "Weekly Smart Meal Planner", "${viewModel.plannedMeals.size} slots")
         (0 until 7).forEach { offset ->
             val meals = viewModel.plannedMeals.filter { it.dayOffset == offset }.sortedBy { it.slot.ordinal }
             Surface(shape = RoundedCornerShape(18.dp), color = MaterialTheme.colorScheme.surface, border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline)) {
@@ -724,7 +724,7 @@ private fun PlannerScreen(viewModel: PantryViewModel) {
         }
         Surface(shape = RoundedCornerShape(18.dp), color = MaterialTheme.colorScheme.surface, border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline)) {
             Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("ðŸ›’ Grocery Checklist", fontWeight = FontWeight.Black)
+                Text("Grocery Checklist", fontWeight = FontWeight.Black)
                 if (viewModel.groceryItems.isEmpty()) {
                     Text("Schedule kitchen formulas on your calendar to auto-compile your grocery shopping list.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 } else {
@@ -780,7 +780,7 @@ private fun ChefTipsCard() {
         Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Icon(Icons.Default.TipsAndUpdates, null, tint = PantryAmber)
             Column {
-                Text("ðŸ§‘â€ðŸ³ Kitchen Chef's Intelligence Hub", fontWeight = FontWeight.Black)
+                Text("Kitchen Chef's Intelligence Hub", fontWeight = FontWeight.Black)
                 Text("Replacing refined grains with whole grains like brown rice, quinoa, or whole-wheat pasta doubles your fiber intake and helps stabilize day-long energy levels.", color = Color(0xFF713F12))
                 Text("SMART CHEF ADVICE ACTIVE", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Black, color = Color(0xFF92400E))
             }
@@ -858,13 +858,13 @@ private fun EmptyPremiumCard(title: String, body: String) {
 }
 
 private fun cuisineEmoji(cuisine: String) = when (cuisine) {
-    "Asian" -> "ðŸ¥¢"
-    "American" -> "ðŸ”"
-    "Italian" -> "ðŸ"
-    "Mexican" -> "ðŸŒ®"
-    "French" -> "ðŸ¥"
-    "Mediterranean" -> "ðŸ¥™"
-    else -> "ðŸ½ï¸"
+    "Asian" -> "AS"
+    "American" -> "US"
+    "Italian" -> "IT"
+    "Mexican" -> "MX"
+    "French" -> "FR"
+    "Mediterranean" -> "MED"
+    else -> "FOOD"
 }
 
 private fun difficulty(recipe: Recipe) = when {
