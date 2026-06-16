@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -64,6 +65,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -88,6 +90,7 @@ import com.llck80ll.pantrydroid.ui.theme.PantryAmber
 import com.llck80ll.pantrydroid.ui.theme.PantryCream
 import com.llck80ll.pantrydroid.ui.theme.PantryIndigo
 import com.llck80ll.pantrydroid.ui.theme.PantryPurple
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
@@ -101,23 +104,25 @@ private enum class AppTab(val label: String) {
 private data class IngredientGroup(
     val name: String,
     val shortName: String,
-    val emoji: String,
+    val icon: ImageVector,
     val items: List<String>
 )
 
 private val ingredientGroups = listOf(
-    IngredientGroup("Meats & Seafood", "Meats", "MEAT", listOf("Chicken Breast", "Ground Beef", "Bacon", "Salmon", "Shrimp", "Cod Fillet", "Canned Tuna", "Sirloin Steak")),
-    IngredientGroup("Dairy & Eggs", "Dairy", "DAIRY", listOf("Eggs", "Milk", "Butter", "Cheddar Cheese", "Parmesan Cheese", "Greek Yogurt")),
-    IngredientGroup("Vegetables & Greens", "Veggies", "VEG", listOf("Garlic", "Onion", "Tomato", "Spinach", "Broccoli", "Mushrooms", "Potatoes", "Avocado")),
-    IngredientGroup("Fruits", "Fruits", "FRUIT", listOf("Lemon", "Lime")),
-    IngredientGroup("Grains & Pantry", "Grains", "GRAIN", listOf("Pasta", "Rice", "Bread", "Tortillas", "Black Beans", "Canned Tomatoes")),
-    IngredientGroup("Spices & Seasonings", "Spices", "SPICE", listOf("Salt & Pepper")),
-    IngredientGroup("Sauces & Oils", "Sauces", "SAUCE", listOf("Olive Oil", "Soy Sauce", "Honey"))
+    IngredientGroup("Meats & Seafood", "Meats", Icons.Default.Restaurant, listOf("Chicken Breast", "Ground Beef", "Bacon", "Salmon", "Shrimp", "Cod Fillet", "Canned Tuna", "Sirloin Steak")),
+    IngredientGroup("Dairy & Eggs", "Dairy", Icons.Default.Inventory2, listOf("Eggs", "Milk", "Butter", "Cheddar Cheese", "Parmesan Cheese", "Greek Yogurt")),
+    IngredientGroup("Vegetables & Greens", "Veggies", Icons.Default.LocalFireDepartment, listOf("Garlic", "Onion", "Tomato", "Spinach", "Broccoli", "Mushrooms", "Potatoes", "Avocado")),
+    IngredientGroup("Fruits", "Fruits", Icons.Default.TipsAndUpdates, listOf("Lemon", "Lime")),
+    IngredientGroup("Grains & Pantry", "Grains", Icons.Default.RestaurantMenu, listOf("Pasta", "Rice", "Bread", "Tortillas", "Black Beans", "Canned Tomatoes")),
+    IngredientGroup("Spices & Seasonings", "Spices", Icons.Default.Tune, listOf("Salt & Pepper")),
+    IngredientGroup("Sauces & Oils", "Sauces", Icons.Default.ShoppingCart, listOf("Olive Oil", "Soy Sauce", "Honey"))
 )
 
 @Composable
 fun PantryApp(viewModel: PantryViewModel) {
     var selectedTab by remember { mutableStateOf(AppTab.MATCH) }
+    val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
 
     Box(
         Modifier
@@ -125,6 +130,7 @@ fun PantryApp(viewModel: PantryViewModel) {
             .background(MaterialTheme.colorScheme.background)
     ) {
         LazyColumn(
+            state = listState,
             contentPadding = PaddingValues(start = 16.dp, top = 18.dp, end = 16.dp, bottom = 26.dp),
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
@@ -135,14 +141,21 @@ fun PantryApp(viewModel: PantryViewModel) {
                     item { IntroCard() }
                     item { PantryBuilder(viewModel) }
                     item { CustomizeCard(viewModel) }
-                    item { FireUpCard(viewModel) }
+                    item {
+                        FireUpCard(viewModel) {
+                            viewModel.requestRecipes()
+                            scope.launch { listState.animateScrollToItem(5) }
+                        }
+                    }
+                    if (viewModel.recipesRequested) {
+                        item { RecipeResults(viewModel) }
+                    }
                     item { StrictMatchCard(viewModel) }
-                    item { RecipeResults(viewModel) }
                     item { ChefTipsCard() }
                 }
 
                 AppTab.SAVED -> {
-                    item { SectionTitle("S", "Bookmarks Favorites", "${viewModel.favorites.size} saved") }
+                    item { SectionTitle(Icons.Default.Favorite, "Bookmarks Favorites", "${viewModel.favorites.size} saved") }
                     if (viewModel.favorites.isEmpty()) {
                         item { EmptyPremiumCard("Your bookmarks bar is empty", "Save recipes from the match cards and they will appear here.") }
                     } else {
@@ -225,7 +238,7 @@ private fun HeaderTab(label: String, selected: Boolean, onClick: () -> Unit) {
 @Composable
 private fun IntroCard() {
     PremiumCard {
-        SectionTitle("*", "What can you cook today?", null)
+        SectionTitle(Icons.Default.LocalFireDepartment, "What can you cook today?", null)
         Surface(
             shape = RoundedCornerShape(18.dp),
             color = Color.Transparent,
@@ -267,7 +280,7 @@ private fun PantryBuilder(viewModel: PantryViewModel) {
                 FilterChip(
                     selected = activeGroup == group,
                     onClick = { activeGroup = group },
-                    label = { Text("${group.emoji} ${group.shortName}", fontWeight = FontWeight.Bold) }
+                    label = { IconLabel(group.icon, group.shortName) }
                 )
             }
         }
@@ -350,7 +363,10 @@ private fun PantryInventory(viewModel: PantryViewModel) {
             ingredientGroups.forEach { group ->
                 val selected = group.items.filter { it in viewModel.pantry }
                 if (selected.isNotEmpty()) {
-                    Text("${group.emoji} ${group.shortName}  ${selected.size}", fontWeight = FontWeight.Black, style = MaterialTheme.typography.labelMedium)
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Icon(group.icon, contentDescription = null, tint = PantryIndigo, modifier = Modifier.size(16.dp))
+                        Text("${group.shortName}  ${selected.size}", fontWeight = FontWeight.Black, style = MaterialTheme.typography.labelMedium)
+                    }
                     LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         items(selected) { item ->
                             AssistChip(onClick = { viewModel.togglePantry(item) }, label = { Text(item) })
@@ -364,15 +380,32 @@ private fun PantryInventory(viewModel: PantryViewModel) {
 
 @Composable
 private fun CustomizeCard(viewModel: PantryViewModel) {
+    val orderedCuisines = listOf("American", "Japanese", "Mexican", "Italian", "French", "Asian", "Modern")
+        .filter { it in viewModel.cuisines }
+
     PremiumCard {
         NumberedTitle(2, "Customize Cuisine & Portion Sizes", "Personalize the flavor direction and portions for custom recipe guides.")
         Text("Choose Cuisine Preference", fontWeight = FontWeight.Black, style = MaterialTheme.typography.labelMedium)
-        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            item {
-                FilterChip(selected = viewModel.selectedCuisine == null, onClick = { viewModel.selectedCuisine = null }, label = { Text("Any Cuisine") })
-            }
-            items(viewModel.cuisines) { cuisine ->
-                FilterChip(selected = viewModel.selectedCuisine == cuisine, onClick = { viewModel.selectedCuisine = cuisine }, label = { Text(cuisineEmoji(cuisine) + " " + cuisine) })
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            FilterChip(
+                selected = viewModel.selectedCuisine == null,
+                onClick = { viewModel.selectedCuisine = null },
+                label = { IconLabel(Icons.Default.RestaurantMenu, "Any Cuisine") }
+            )
+            orderedCuisines.chunked(2).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                    row.forEach { cuisine ->
+                        FilterChip(
+                            selected = viewModel.selectedCuisine == cuisine,
+                            onClick = { viewModel.selectedCuisine = cuisine },
+                            label = { IconLabel(cuisineIcon(cuisine), cuisine) },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                    if (row.size == 1) {
+                        Spacer(Modifier.weight(1f))
+                    }
+                }
             }
         }
         Text("Select Number of Servings", fontWeight = FontWeight.Black, style = MaterialTheme.typography.labelMedium)
@@ -394,7 +427,7 @@ private fun CustomizeCard(viewModel: PantryViewModel) {
 }
 
 @Composable
-private fun FireUpCard(viewModel: PantryViewModel) {
+private fun FireUpCard(viewModel: PantryViewModel, onFireUp: () -> Unit) {
     PremiumCard {
         NumberedTitle(3, "Fire Up the Stove!", "Find delicious guides tailored perfectly to whatever ingredients you have.")
         StatRow(
@@ -413,7 +446,7 @@ private fun FireUpCard(viewModel: PantryViewModel) {
             )
         }
         Button(
-            onClick = {},
+            onClick = onFireUp,
             modifier = Modifier.fillMaxWidth().height(56.dp),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = PantryIndigo)
@@ -450,8 +483,15 @@ private fun StrictMatchCard(viewModel: PantryViewModel) {
 @Composable
 private fun RecipeResults(viewModel: PantryViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        SectionTitle("R", "Gourmet Recipes", "${viewModel.matches.size} total")
-        Text("A custom culinary selection built around your pantry.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        SectionTitle(Icons.Default.Restaurant, "Gourmet Recipes", "${viewModel.matches.size} total")
+        Text(
+            if (viewModel.selectedCuisine == null) {
+                "A custom culinary selection built around your pantry."
+            } else {
+                "${viewModel.selectedCuisine} recipes matched against your pantry."
+            },
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
         if (viewModel.matches.isEmpty()) {
             EmptyPremiumCard("No Matches Found", "No recipes fit your selected filters. Try relaxing strict matching or selecting more ingredients.")
         } else {
@@ -699,7 +739,7 @@ private fun StepCard(index: Int, step: String, ingredients: List<Ingredient>, ow
 @Composable
 private fun PlannerScreen(viewModel: PantryViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        SectionTitle("P", "Weekly Smart Meal Planner", "${viewModel.plannedMeals.size} slots")
+        SectionTitle(Icons.Default.CalendarMonth, "Weekly Smart Meal Planner", "${viewModel.plannedMeals.size} slots")
         (0 until 7).forEach { offset ->
             val meals = viewModel.plannedMeals.filter { it.dayOffset == offset }.sortedBy { it.slot.ordinal }
             Surface(shape = RoundedCornerShape(18.dp), color = MaterialTheme.colorScheme.surface, border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline)) {
@@ -796,14 +836,22 @@ private fun PremiumCard(content: @Composable ColumnScope.() -> Unit) {
 }
 
 @Composable
-private fun SectionTitle(icon: String, title: String, badge: String?) {
+private fun SectionTitle(icon: ImageVector, title: String, badge: String?) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Surface(shape = RoundedCornerShape(10.dp), color = PantryIndigo.copy(alpha = 0.10f), modifier = Modifier.size(34.dp)) {
-            Box(contentAlignment = Alignment.Center) { Text(icon) }
+            Box(contentAlignment = Alignment.Center) { Icon(icon, contentDescription = null, tint = PantryIndigo, modifier = Modifier.size(18.dp)) }
         }
         Spacer(Modifier.width(10.dp))
         Text(title.uppercase(), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Black, color = PantryIndigo, modifier = Modifier.weight(1f))
         if (badge != null) Badge(badge)
+    }
+}
+
+@Composable
+private fun IconLabel(icon: ImageVector, label: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        Icon(icon, contentDescription = null, modifier = Modifier.size(16.dp))
+        Text(label, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -857,14 +905,15 @@ private fun EmptyPremiumCard(title: String, body: String) {
     }
 }
 
-private fun cuisineEmoji(cuisine: String) = when (cuisine) {
-    "Asian" -> "AS"
-    "American" -> "US"
-    "Italian" -> "IT"
-    "Mexican" -> "MX"
-    "French" -> "FR"
-    "Mediterranean" -> "MED"
-    else -> "FOOD"
+private fun cuisineIcon(cuisine: String) = when (cuisine) {
+    "American" -> Icons.Default.LocalFireDepartment
+    "Japanese" -> Icons.Default.Restaurant
+    "Asian" -> Icons.Default.Restaurant
+    "Italian" -> Icons.Default.RestaurantMenu
+    "Mexican" -> Icons.Default.RestaurantMenu
+    "French" -> Icons.Default.TipsAndUpdates
+    "Mediterranean" -> Icons.Default.Inventory2
+    else -> Icons.Default.Restaurant
 }
 
 private fun difficulty(recipe: Recipe) = when {

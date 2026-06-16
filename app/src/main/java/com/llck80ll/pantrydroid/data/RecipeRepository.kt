@@ -7,11 +7,11 @@ import kotlinx.serialization.json.Json
 class RecipeRepository(private val context: Context) {
     private val json = Json { ignoreUnknownKeys = true }
 
-    fun load(): List<Recipe> = runCatching {
+    fun load(): List<Recipe> {
         val content = context.assets.open("recipes.json")
             .bufferedReader()
             .use { it.readText() }
-        json.decodeFromString<List<Recipe>>(content)
-    }.getOrDefault(emptyList())
+            .trimStart('\uFEFF')
+        return json.decodeFromString<List<Recipe>>(content)
+    }
 }
-

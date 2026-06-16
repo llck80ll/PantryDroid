@@ -10,6 +10,7 @@ object MatchingEngine {
         pantry: Set<String>,
         cuisine: String? = null
     ): List<RecipeMatch> = recipes
+        .filter { recipe -> cuisine == null || recipe.cuisine == cuisine }
         .map { recipe ->
             val owned = recipe.ingredients.filter { ingredient ->
                 pantry.any { namesMatch(it, ingredient.name) }
@@ -20,11 +21,11 @@ object MatchingEngine {
                 missing = recipe.ingredients - owned.toSet()
             )
         }
+        .filter { match -> pantry.isEmpty() || match.owned.isNotEmpty() }
         .sortedWith(
             compareByDescending<RecipeMatch> {
-                cuisine == null || it.recipe.cuisine == cuisine
+                it.percentage
             }
-                .thenByDescending { it.percentage }
                 .thenByDescending { it.owned.size }
                 .thenBy { it.missing.size }
         )
@@ -46,4 +47,3 @@ object MatchingEngine {
         return normalized
     }
 }
-

@@ -30,6 +30,8 @@ class PantryViewModel(application: Application) : AndroidViewModel(application) 
     var selectedRecipe by mutableStateOf<Recipe?>(null)
     var strictMatch by mutableStateOf(false)
     var servings by mutableStateOf(4)
+    var recipesRequested by mutableStateOf(false)
+        private set
 
     val cuisines: List<String> get() = recipes.map { it.cuisine }.distinct().sorted()
     val matches
@@ -74,6 +76,10 @@ class PantryViewModel(application: Application) : AndroidViewModel(application) 
     fun clearPantry() {
         pantry = emptySet()
         preferences.savePantry(pantry)
+    }
+
+    fun requestRecipes() {
+        recipesRequested = true
     }
 
     fun toggleFavorite(recipe: Recipe) {

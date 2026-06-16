@@ -702,7 +702,72 @@
                           "protein":  19,
                           "carbs":  39,
                           "fat":  27
-                      },
+        },
         "icon":  "AVO"
+    },
+    {
+        "id":  "japanese-salmon-rice-bowl",
+        "name":  "Japanese Salmon Rice Bowl",
+        "summary":  "Glazed salmon over rice with avocado, soy, honey, garlic, and a bright lime finish.",
+        "cuisine":  "Japanese",
+        "tags":  [
+                     "Seafood",
+                     "High Protein",
+                     "Rice Bowl"
+                 ],
+        "prepMinutes":  10,
+        "cookMinutes":  18,
+        "servings":  2,
+        "ingredients":  [
+                            {
+                                "name":  "Salmon",
+                                "amount":  "2 fillets",
+                                "category":  "Protein"
+                            },
+                            {
+                                "name":  "Rice",
+                                "amount":  "1 cup",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Soy Sauce",
+                                "amount":  "2 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Honey",
+                                "amount":  "1 tbsp",
+                                "category":  "Pantry"
+                            },
+                            {
+                                "name":  "Garlic",
+                                "amount":  "2 cloves",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Avocado",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            },
+                            {
+                                "name":  "Lime",
+                                "amount":  "1",
+                                "category":  "Produce"
+                            }
+                        ],
+        "steps":  [
+                      "Cook the rice until fluffy and keep it warm.",
+                      "Whisk soy sauce, honey, grated garlic, and lime juice into a glossy glaze.",
+                      "Sear salmon skin-side down until crisp, then flip and brush with glaze.",
+                      "Simmer the remaining glaze for one minute until slightly thickened.",
+                      "Serve salmon over rice with sliced avocado and extra glaze."
+                  ],
+        "nutrition":  {
+                          "calories":  640,
+                          "protein":  38,
+                          "carbs":  66,
+                          "fat":  25
+                      },
+        "icon":  "BOWL"
     }
 ]
