@@ -7,24 +7,36 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-val PantryGreen = Color(0xFF2E6E4F)
-val PantryOrange = Color(0xFFE87832)
-val PantryCream = Color(0xFFF7F3E8)
+val PantryIndigo = Color(0xFF4F46E5)
+val PantryPurple = Color(0xFF6D28D9)
+val PantryAmber = Color(0xFFF59E0B)
+val PantryCream = Color(0xFFFAF8F5)
+val PantryInk = Color(0xFF15141D)
 
 private val LightColors = lightColorScheme(
-    primary = PantryGreen,
-    secondary = PantryOrange,
+    primary = PantryIndigo,
+    secondary = PantryAmber,
+    tertiary = PantryPurple,
     background = PantryCream,
-    surface = Color(0xFFFFFBF4),
-    surfaceVariant = Color(0xFFEDE7DA)
+    surface = Color.White,
+    surfaceVariant = Color(0xFFF4F4F5),
+    outline = Color(0xFFE4E4E7),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onSurface = PantryInk,
+    onBackground = PantryInk
 )
 
 private val DarkColors = darkColorScheme(
-    primary = Color(0xFF79D3A3),
-    secondary = Color(0xFFFFB17D),
-    background = Color(0xFF151A17),
-    surface = Color(0xFF1D2420),
-    surfaceVariant = Color(0xFF29312C)
+    primary = Color(0xFFA5B4FC),
+    secondary = Color(0xFFFBBF24),
+    tertiary = Color(0xFFC4B5FD),
+    background = Color(0xFF09090B),
+    surface = Color(0xFF121118),
+    surfaceVariant = Color(0xFF27272A),
+    outline = Color(0xFF3F3F46),
+    onSurface = Color(0xFFFAFAFA),
+    onBackground = Color(0xFFFAFAFA)
 )
 
 @Composable
@@ -34,4 +46,3 @@ fun PantryDroidTheme(content: @Composable () -> Unit) {
         content = content
     )
 }
-

@@ -28,9 +28,14 @@ class PantryViewModel(application: Application) : AndroidViewModel(application) 
         private set
     var selectedCuisine by mutableStateOf<String?>(null)
     var selectedRecipe by mutableStateOf<Recipe?>(null)
+    var strictMatch by mutableStateOf(false)
+    var servings by mutableStateOf(4)
 
     val cuisines: List<String> get() = recipes.map { it.cuisine }.distinct().sorted()
-    val matches get() = MatchingEngine.ranked(recipes, pantry, selectedCuisine)
+    val matches
+        get() = MatchingEngine
+            .ranked(recipes, pantry, selectedCuisine)
+            .let { list -> if (strictMatch) list.filter { it.percentage >= 90 } else list }
     val favorites get() = recipes.filter { it.id in favoriteIds }
 
     val groceryItems: List<GroceryItem>
@@ -109,4 +114,3 @@ class PantryViewModel(application: Application) : AndroidViewModel(application) 
         preferences.saveCheckedGroceries(checkedGroceries)
     }
 }
-
